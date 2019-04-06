@@ -1,5 +1,36 @@
 <div class="workspace-container">
 
-  {{ json | json }}
+  <p-table [value]="alumnos" *ngIf="alumnos">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Primer Apellido</th>
+        <th>Segundo Apellido</th>
+        <th>Calificacion</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-alumno>
+      <tr>
+        <td>{{alumno.id}}</td>
+        <td>{{alumno.name}}</td>
+        <td>{{alumno.primerApellido}}</td>
+        <td>{{alumno.segundoApellido}}</td>
+        <td>{{alumno.calificacion}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <a style="margin-top: 10px; margin-right: 10px;" class="waves-effect waves-light btn" (click)="getAlumnos()">
+    Cargar Alumnos!
+  </a>
+
+  <a style="margin-top: 10px; margin-right: 10px;" class="waves-effect waves-light btn" (click)="postAlumno()">
+    Subir Alumno!
+  </a>
+
+  <a style="margin-top: 10px;" class="waves-effect waves-light btn" (click)="deleteAlumno()">
+    Eliminar Alumno!
+  </a>
 
 </div>

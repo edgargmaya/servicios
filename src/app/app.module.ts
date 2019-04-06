@@ -12,6 +12,7 @@ import { WorkSpaceComponent } from './components/work-space/workspace.component'
 
 /* PrimeNG Components */
 import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
 
 /* Application Services */
 import { ConsumoService } from './services/consumo.service';
@@ -27,7 +28,8 @@ import { ConsumoService } from './services/consumo.service';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    CardModule
+    CardModule,
+    TableModule
   ],
   providers: [ ConsumoService ],
   bootstrap: [AppComponent]
