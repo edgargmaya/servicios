@@ -1,0 +1,25 @@
+<div style="margin-bottom: 10px;">
+  <form *ngIf="alumno" #form="ngForm">
+    Nombre:
+    <input type="text" name="input" required [(ngModel)]="alumno.name" #nombre="ngModel">
+    <div class="error" *ngIf="nombre.touched && nombre.invalid">
+      El nombre es requerido!
+    </div>
+
+    Primer Apellido:
+    <input type="text" name="pApellido" [(ngModel)]="alumno.primerApellido" required #pApellido="ngModel">
+    <div class="error" *ngIf="pApellido.touched && pApellido.invalid">
+      El primer apellido es requerido!
+    </div>
+
+    Segundo Apellido:
+    <input type="text" name="sApellido" [(ngModel)]="alumno.segundoApellido" required #sApellido="ngModel">
+    <div class="error" *ngIf="pApellido.touched && pApellido.invalid">
+      El segundo apellido es requerido!
+    </div>
+    
+    <button style="margin-top: 10px; margin-right: 10px;" class="waves-effect waves-light btn" (click)="onEnviar(form)">
+      <ng-content></ng-content>
+    </button>
+  </form>
+</div>

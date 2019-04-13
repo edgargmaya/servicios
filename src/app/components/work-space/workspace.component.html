@@ -1,5 +1,9 @@
 <div class="workspace-container">
 
+  <app-form (alumnoOutput)="recibirAlumno($event)">
+    Registrar Alumno
+  </app-form>
+
   <p-table [value]="alumnos" *ngIf="alumnos">
     <ng-template pTemplate="header">
       <tr>
@@ -25,12 +29,17 @@
     Cargar Alumnos!
   </a>
 
-  <a style="margin-top: 10px; margin-right: 10px;" class="waves-effect waves-light btn" (click)="postAlumno()">
-    Subir Alumno!
-  </a>
-
   <a style="margin-top: 10px;" class="waves-effect waves-light btn" (click)="deleteAlumno()">
     Eliminar Alumno!
   </a>
+
+  <input [(ngModel)]="alumnoId">
+  <a style="margin-top: 10px;" class="waves-effect waves-light btn" (click)="cargarAlumno()">
+    Cargar Alumno!
+  </a>
+
+  <app-form [alumnoNuevo]="alumnoFound" (alumnoOutput)="recibirAlumno($event)">
+    Actualizar Alumno
+  </app-form>
 
 </div>

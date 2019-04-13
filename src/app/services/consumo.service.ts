@@ -10,15 +10,15 @@ export class ConsumoService {
     constructor( private $http: HttpClient ){ }
 
     public getService(): Observable<any> {
-        return this.$http.get("http://localhost:8089/angular/alumno" );
+        return this.$http.get("http://localhost:8095/angular/alumno" );
     }
 
     public postService( alumno : Alumno ){
-        return this.$http.post("http://localhost:8089/angular/alumno", alumno );
+        return this.$http.post("http://localhost:8095/angular/alumno", alumno );
     }
 
     public deleteService( id: number ){
-        return this.$http.delete("http://localhost:8089/angular/alumno/" + id );
+        return this.$http.delete("http://localhost:8095/angular/alumno/" + id );
     }
 
 }

@@ -10,10 +10,15 @@ import { Alumno } from '../../models/Alumno';
 })
 export class WorkSpaceComponent {
 
+  alumnoId: number;
   alumnos: Array<Alumno>;
+
+  alumnoFound: Alumno;
+
   onError: boolean = false;
 
   constructor( private $servicio : ConsumoService ){
+    this.getAlumnos();
   }
 
   getAlumnos(){
@@ -29,15 +34,9 @@ export class WorkSpaceComponent {
     );
   }
 
-  postAlumno(){
-    let newAlumno : Alumno = {
-      id: 3,
-      name: "Pocho Lalo",
-      primerApellido: "Dominguez",
-      segundoApellido: "Gonzalez",
-      calificacion: 8
-    };
-    this.$servicio.postService( newAlumno ).subscribe((data) => {
+  postAlumno( alumno: Alumno){
+    alumno.id = this.alumnos.length + 1;
+    this.$servicio.postService( alumno ).subscribe( (data) => {
       console.log("Se añadio alumno", data );
       this.getAlumnos();
     }, err => {
@@ -46,12 +45,26 @@ export class WorkSpaceComponent {
   }
 
   deleteAlumno(){
-    this.$servicio.deleteService( 2 ).subscribe((data) => {
+    this.$servicio.deleteService( 2 ).subscribe( (data) => {
       console.log("Se eliminó alumno", data );
       this.getAlumnos();
     }, err => {
       console.error( err );
     });
+  }
+
+  cargarAlumno(){
+    let objTmp: any = this.alumnos.filter( (alumno) => alumno.id == this.alumnoId );
+    if( objTmp.length > 0 )
+      this.alumnoFound = objTmp[0];
+  }
+
+  recibirAlumno( alumno: Alumno){
+    
+    this.postAlumno( alumno );
+
+    
+
   }
 
 }
